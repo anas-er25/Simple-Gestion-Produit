@@ -20,15 +20,15 @@ class ProduitController extends Controller
         return view('products.create', ['types'=>$types]);
     }
     public function save(Request $request){
-        // $request->validate([
-        //     'RefPdt' => 'required',
-        //     'libPdt' => 'required',
-        //     'Prix' => 'required',
-        //     'Qte' => 'required',
-        //     'description' => 'required',
-        //     'Type' => 'required',
-        //     'image' => 'required|mimes:jpeg,png,jpg|max:2048',
-        // ]);
+        $request->validate([
+            'RefPdt' => 'required',
+            'libPdt' => 'required',
+            'Prix' => 'required',
+            'Qte' => 'required',
+            'description' => 'required',
+            'Type' => 'required|integer',  // Ensure it is an integer
+            'image' => 'required|mimes:jpeg,png,jpg|max:2048',
+        ]);
         // dd($request->all());
         $product=new produit();
         $product->RefPdt=$request->input('RefPdt');
